@@ -1,0 +1,6 @@
+<h1>言語登録</h1>
+<%= form_with model: @lang do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>
