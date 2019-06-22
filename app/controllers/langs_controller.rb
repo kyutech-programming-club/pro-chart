@@ -10,7 +10,7 @@ class LangsController < ApplicationController
   def create
     @lang = Lang.new(lang_params)
     if @lang.save
-      redirect_to lang_path(@lang)
+      redirect_to @lang
     else
       render :new
     end

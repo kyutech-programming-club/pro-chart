@@ -1,2 +1,6 @@
-<h1>Elems#new</h1>
-<p>Find me in app/views/elems/new.html.erb</p>
+<h1>要素登録</h1>
+<%= form_with model: @elem, url: lang_elems_path(params[:lang_id]) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>
