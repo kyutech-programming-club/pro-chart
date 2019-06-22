@@ -10,4 +10,8 @@
 <% end %>
 
 
-
+<% if current_user && current_user.admin? %>
+  |  <%= link_to "削除", lang_path(@lang), method: :delete,
+                 data: { confirm: "本当に削除しますか？" } %>
+  または  <%= link_to "編集", edit_lang_path(@lang) %>
+<% end %>

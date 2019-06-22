@@ -1,11 +1,20 @@
-<% @langs.each do |lang| %>
-  <%= link_to lang.name, lang_path(lang) %>
-  <% if current_user %>
-    <% if current_user.admin? %>
-      |  <%= link_to "削除", lang_path(lang), method: :delete,
-                    data: { confirm: "本当に削除しますか？" } %>
-       または  <%= link_to "編集", edit_lang_path(lang) %>
-    <% end %>
+<h1>言語一覧</h1>
+
+<%= link_to "新規登録", new_lang_path, class: "btn btn-primary" %>
+
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>言語名</th>
+    <th>要素数</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @langs.each do |lang| %>
+    <tr>
+      <td><%= link_to lang.name, lang_path(lang) %></td>
+      <td><%= lang.elems.count %></td>
+    </tr>
   <% end %>
-  <br>
-<% end %>
+  </tbody>
+</table>
