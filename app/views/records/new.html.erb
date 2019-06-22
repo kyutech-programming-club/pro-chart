@@ -1,2 +1,12 @@
 <h1>Records#new</h1>
-<p>Find me in app/views/records/new.html.erb</p>
+<%= form_with model: @record do |f| %>
+  <%= f.label :r_date %>
+  <%= f.date_select :r_date, class: "form-control"%>
+  <%= f.label :comment%>
+  <%= f.text_area :comment, class: "form-control"%>
+  <%= f.fields_for :record_elems do |i| %>
+    <%= i.label :elem_id %>
+    <%= i.select :elem_id, [["1",2],["2",2],["3",3],["4",4],["5",5]]%>
+  <% end %>
+  <%= f.submit class: "btn btn-primary"%>
+<% end %>
