@@ -41,6 +41,6 @@ class ElemsController < ApplicationController
   private
 
   def elem_params
-    params.required(:elem).permit(:name)
+    params.require(:elem).permit(:name)
   end
 end
