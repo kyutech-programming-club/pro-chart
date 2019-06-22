@@ -1,2 +1,12 @@
-<h1>Records#show</h1>
-<p>Find me in app/views/records/show.html.erb</p>
+<h1>詳細</h1>
+<%=@record.user.name %>
+<%=@record.r_date %>
+<%=@record.comment %>
+<%if @record.record_elems %>
+  <%@record.record_elems.each do |e|%>
+  <%=e.elem.lang.name %>
+  <%=e.elem.name %><hr>
+  <% end %>
+  <% else %>
+    <p>naiyo</p>
+  <% end %>

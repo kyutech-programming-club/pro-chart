@@ -1,2 +1,4 @@
-<h1>Records#index</h1>
-<p>Find me in app/views/records/index.html.erb</p>
+<h1>一覧表示</h1>
+<%@records.each do |record|%>
+  <%=link_to record.id, record_path(record.id)%>
+<% end %>

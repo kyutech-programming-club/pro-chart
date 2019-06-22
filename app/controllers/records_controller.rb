@@ -1,5 +1,6 @@
 class RecordsController < ApplicationController
   def index
+    @records = Record.all
   end
 
   def new
@@ -8,10 +9,8 @@ class RecordsController < ApplicationController
   end
 
   def create
-    puts params[:group][:elem_ids].map{|s| s.to_i}
     @record = Record.new(record_params)
     @record.user = current_user
-    # @record.record_elems.elem = Elem.find(params[:record][:record_elems_attributes]["0"]["elem_id"].map{|s| s.to_i})
     if @record.save
       elems = params[:group][:elem_ids].map{|s| s.to_i}
       elems.each do |e|
@@ -25,14 +24,11 @@ class RecordsController < ApplicationController
   end
 
   def show
+    @record = Record.find(params[:id])
   end
 
   private
   def record_params
     params.require(:record).permit(:r_date, :comment)
-  end
-
-  def elem_params
-    params.require(:group).permit(elem_ids: [])
   end
 end
