@@ -18,6 +18,16 @@ class ElemsController < ApplicationController
 
   def show
     @elem = Elem.find(params[:id])
+    users = []
+    RecordElem.where(elem_id: @elem.id).each do |re|
+      users.push(re.record.user.name)
+    end
+    users.uniq!
+    puts users
+    @elem_users = []
+    users.each do |user|
+      @elem_users.push(User.find_by(name: user))
+    end
   end
 
   def destroy
