@@ -1,0 +1,4 @@
+<h1>一覧表示</h1>
+<%@records.each do |record|%>
+  <%=link_to record.id, record_path(record.id)%>
+<% end %>

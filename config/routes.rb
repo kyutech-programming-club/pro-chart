@@ -9,4 +9,7 @@ Rails.application.routes.draw do
     resources 'elems'
   end
 
+  resources 'records' do
+    resources 'record_elems'
+  end
 end
