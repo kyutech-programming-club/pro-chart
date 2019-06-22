@@ -14,3 +14,13 @@
  *= require_self
  */
 @import 'bootstrap';
+
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  margin-top: auto;
+}
