@@ -19,6 +19,11 @@ class ElemsController < ApplicationController
     @elem = Elem.find(params[:id])
   end
 
+  def destroy
+    Elem.find(params[:id]).destroy
+    redirect_to lang_path(params[:lang_id]), success: "削除完了"
+  end
+
   def edit
     @elem = Elem.find(params[:id])
   end
