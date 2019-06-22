@@ -24,11 +24,11 @@
     <tr>
       <td><%= link_to elem.name, lang_elem_path(@lang, elem) %></td>
       <td>
-        <% c = 0 %>
-        <% Record.all.each do |r| %>
-          <% c += r.record_elems.where(elem_id: elem.id).count %>
+        <% users = [] %>
+        <% RecordElem.where(elem_id: elem.id).each do |re| %>
+        <% users.push(re.record.user.name) %>
         <% end %>
-        <%= c %>
+        <%= users.uniq.count %>
       </td>
       <td>
         <% if current_user %>
