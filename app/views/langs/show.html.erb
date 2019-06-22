@@ -2,4 +2,8 @@
 <% @elems.each do |elem| %>
   <%= link_to elem.name, lang_elem_path(@lang, elem) %>
 
+  <% if current_user %>
+  | <%= link_to "追加", new_lang_elem_path(@lang, elem) %>
+  <% end %>
+
 <% end %>
