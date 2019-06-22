@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      redirect_to root_path
+      redirect_to root_path, success: "新規登録に成功しました"
     else
       render :new
       end
