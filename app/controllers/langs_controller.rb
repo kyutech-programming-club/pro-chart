@@ -1,5 +1,6 @@
 class LangsController < ApplicationController
-  before_action :authenticate_user, only: %i[new create]
+  before_action :authenticate_user, only: %i[new create edit update destroy]
+  before_action :admin_user, only: %i[edit update destroy]
 
   def index
     @langs = Lang.all
@@ -12,7 +13,7 @@ class LangsController < ApplicationController
   def create
     @lang = Lang.new(lang_params)
     if @lang.save
-      redirect_to @lang, success: "言語登録に成功しました"
+      redirect_to new_lang_elem_path(@lang), success: "言語登録に成功しました"
     else
       render :new
     end
@@ -23,9 +24,27 @@ class LangsController < ApplicationController
     @elems = @lang.elems
   end
 
+  def destroy
+    Lang.find(params[:id]).destroy
+    redirect_to langs_path, success: "削除完了"
+  end
+
+  def edit
+    @lang = Lang.find(params[:id])
+  end
+
+  def update
+    @lang = Lang.find(params[:id])
+    if @lang.update(lang_params)
+      redirect_to langs_path, success: "編集完了"
+    else
+      render :edit
+    end
+  end
+
   private
 
   def lang_params
-    params.required(:lang).permit(:name)
+    params.require(:lang).permit(:name)
   end
 end
