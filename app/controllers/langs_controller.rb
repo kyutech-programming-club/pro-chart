@@ -18,6 +18,7 @@ class LangsController < ApplicationController
 
   def show
     @lang = Lang.find(params[:id])
+    @elems = @lang.elems
   end
 
   private
