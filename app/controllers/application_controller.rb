@@ -5,7 +5,13 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user
     if current_user == nil
-      redirect_to root_path, danger: "ログインしてください"
+      redirect_to login_path, danger: "ログインしてください"
+    end
+  end
+
+  def recomend_user
+    if current_user == nil
+      redirect_to login_path, info: "記録するにはメンバーになりましょう！！"
     end
   end
 
