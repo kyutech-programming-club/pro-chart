@@ -23,6 +23,24 @@ class LangsController < ApplicationController
     @elems = @lang.elems
   end
 
+  def destroy
+    Lang.find(params[:id]).destroy
+    redirect_to langs_path, success: "削除完了"
+  end
+
+  def edit
+    @lang = Lang.find(params[:id])
+  end
+
+  def update
+    @lang = Lang.find(params[:id])
+    if @lang.update(lang_params)
+      redirect_to langs_path, success: "編集完了"
+    else
+      render :edit
+    end
+  end
+
   private
 
   def lang_params
