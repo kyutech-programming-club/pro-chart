@@ -1,0 +1,7 @@
+<h1>要素登録</h1>
+<%= form_with model: @elem, url: lang_elems_path(params[:lang_id]), local: true do |f| %>
+  <%= inform_validation_error @elem %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>
