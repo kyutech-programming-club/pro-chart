@@ -1,2 +1,3 @@
-<h1>Langs#index</h1>
-<p>Find me in app/views/langs/index.html.erb</p>
+<% @langs.each do |lang| %>
+  <%= link_to lang.name, lang_path(lang) %>
+<% end %>
