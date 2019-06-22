@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'home/top'
-  root 'users#index'
+  root 'home#top'
   get "login" => "sessions#new"
   post "login" => "sessions#create"
   delete "logout" => "sessions#destroy"
