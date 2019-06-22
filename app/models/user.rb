@@ -1,9 +1,9 @@
 class User < ApplicationRecord
-    attr_accessor :remember_token
+  attr_accessor :remember_token
 
-    has_secure_password
+  has_secure_password
 
-    validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true
 
 
   def User.digest(string)
