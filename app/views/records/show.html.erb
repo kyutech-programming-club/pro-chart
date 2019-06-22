@@ -1,11 +1,11 @@
 <h1>詳細</h1>
 <%=@record.user.name %>
 <%=@record.r_date %>
-<%=@record.comment %>
+<%=@record.comment %><hr>
 <%if @record.record_elems != []%>
   <%@record.record_elems.each do |e|%>
-  <%=e.elem.lang.name %>
-  <%=e.elem.name %><hr>
+    <%=e.elem.lang.name %>
+    <%=e.elem.name %><hr>
   <% end %>
 <% else %>
   <p>naiyo</p>
