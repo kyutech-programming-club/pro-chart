@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  def index
+  before_action :admin_user, only: :destroy
+
+  def indexq
     @users = User.all
   end
 
