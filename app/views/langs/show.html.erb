@@ -1,13 +1,52 @@
-<%= @lang.name %>
+<h1><%= @lang.name %></h1>
 
-<% if current_user %>
-  <%= link_to "追加", new_lang_elem_path(@lang, @elems) %>
+<% if current_user && current_user.admin? %>
+  <%= link_to "削除", lang_path(@lang), method: :delete,
+                 data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+  <%= link_to "編集", edit_lang_path(@lang), class: "btn btn-warning" %>
 <% end %>
 
-<% @elems.each do |elem| %>
-   <br>
-  <%= link_to elem.name, lang_elem_path(@lang, elem) %>
-<% end %>
+<br>
+
+<%= link_to "要素追加", new_lang_elem_path(@lang, @elems), class: "btn btn-primary" %>
 
 
-
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>要素名</th>
+    <th>クリアした人数</th>
+    <th>クリアしたか</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @lang.elems.each do |elem| %>
+    <tr>
+      <td><%= link_to elem.name, lang_elem_path(@lang, elem) %></td>
+      <td>
+        <% c = 0 %>
+        <% Record.all.each do |r| %>
+          <% c += r.record_elems.where(elem_id: elem.id).count %>
+        <% end %>
+        <%= c %>
+      </td>
+      <td>
+        <% if current_user %>
+          <% rs = Record.where(user_id: current_user.id) %>
+          <% clear = 0 %>
+          <% rs.each do |r| %>
+            <% clear += r.record_elems.where(elem_id: elem.id).count %>
+          <% end %>
+          <% if clear.zero? %>
+            未クリア
+          <% else %>
+            クリア
+          <% end %>
+        <% else %>
+          未ログインです
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
