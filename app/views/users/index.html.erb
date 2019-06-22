@@ -5,7 +5,7 @@
   <% if current_user %>
     <% if current_user.admin? %>
        | <%= link_to "delete", user, method: :delete,
-                    data: { confirm: "You sure?" } %>
+                    data: { confirm: "本当に削除しますか？" } %>
     <% end %>
   <% end %>
   <br>

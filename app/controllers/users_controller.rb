@@ -21,6 +21,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def destroy
+    User.find(params[:id]).destroy
+    redirect_to users_path, success: "削除完了"
+  end
+
   private
 
   def user_params
