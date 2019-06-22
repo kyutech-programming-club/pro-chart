@@ -12,7 +12,7 @@ class LangsController < ApplicationController
   def create
     @lang = Lang.new(lang_params)
     if @lang.save
-      redirect_to @lang, success: "言語登録に成功しました"
+      redirect_to new_lang_elem_path(@lang), success: "言語登録に成功しました"
     else
       render :new
     end

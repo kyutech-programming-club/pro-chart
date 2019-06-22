@@ -1,4 +1,5 @@
 <%= @lang.name %>
 <% @elems.each do |elem| %>
   <%= link_to elem.name, lang_elem_path(@lang, elem) %>
+
 <% end %>
