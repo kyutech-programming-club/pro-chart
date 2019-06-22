@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'records/index'
+  get 'records/new'
+  get 'records/show'
   root 'home#top'
   get "login" => "sessions#new"
   post "login" => "sessions#create"
