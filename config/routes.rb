@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'posts/index'
   root 'home#top'
   get "login" => "sessions#new"
   post "login" => "sessions#create"
