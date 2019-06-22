@@ -1,5 +1,5 @@
 <h1>TOP</h1>
 <% @users.each do |user| %>
-  <%= user.name %>
+  <%= link_to user.name, user_path(user) %>
 <% end %>
 <%= link_to "新規登録", new_user_path %>
