@@ -1,8 +1,16 @@
-<h1>Elems#show</h1>
-<%= @elem.lang.name %>
-<%= @elem.name %>
+<h1><%= @elem.lang.name %></h1>
+<h2><%= @elem.name %></h2>
+
 <% if current_user && current_user.admin? %>
-  |  <%= link_to "削除", lang_elem_path, method: :delete,
-                 data: { confirm: "本当に削除しますか？" } %>
-  <%= link_to "編集",  edit_lang_elem_path(@elem.lang, @elem) %>
+  <%= link_to "削除", lang_elem_path, method: :delete,
+                 data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+  <%= link_to "編集",  edit_lang_elem_path(@elem.lang, @elem), class: "btn btn-warning" %>
+<% end %>
+
+<hr>
+
+<h3>クリアした人一覧</h3>
+
+<% RecordElem.where(elem_id: @elem.id).each do |re| %>
+  <%= link_to re.record.user.name, record_path(re.record) %><br>
 <% end %>
