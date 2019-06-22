@@ -19,7 +19,7 @@ class RecordsController < ApplicationController
       end
       redirect_to record_path(@record)
     else
-      render 'new'
+      render :new
     end
   end
 
