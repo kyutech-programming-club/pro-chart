@@ -16,10 +16,12 @@ class RecordsController < ApplicationController
     @record = Record.new(record_params)
     @record.user = current_user
     if @record.save
-      elems = params[:group][:elem_ids].map{|s| s.to_i}
-      elems.each do |e|
-        re = RecordElem.new(record_id: @record.id, elem_id: e)
-        re.save
+      if params[:group]
+        elems = params[:group][:elem_ids].map{|s| s.to_i}
+        elems.each do |e|
+          re = RecordElem.new(record_id: @record.id, elem_id: e)
+          re.save
+        end
       end
       redirect_to record_path(@record)
     else

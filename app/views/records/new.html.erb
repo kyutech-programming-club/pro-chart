@@ -1,5 +1,6 @@
 <h1>記録投稿</h1>
-<%= form_with model: @record do |f| %>
+<%= form_with model: @record, local: true do |f| %>
+  <%= inform_validation_error @record %>
   <%= f.label "日付" %>
   <%= f.date_select :r_date, class: "form-control"%><br>
 
