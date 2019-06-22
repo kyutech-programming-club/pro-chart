@@ -4,6 +4,7 @@ class RecordsController < ApplicationController
 
   def new
     @record = Record.new
+    @langs = Lang.all
   end
 
   def create
