@@ -1,2 +1,33 @@
-<h1>Users#show</h1>
-<%= @user.name %>
+<h1><%= @user.name %></h1>
+
+<h2>習得言語一覧</h2>
+<% @user_langs.each do |l| %>
+  <%= link_to l.name, l %>
+<% end %>
+
+<hr>
+
+<h2>記録一覧</h2>
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>日付</th>
+    <th>コメント</th>
+    <th>習得した言語・要素一覧</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @user_records.each do |r| %>
+    <tr>
+      <td><%= r.r_date %></td>
+      <td><%= r.comment %></td>
+      <td>
+        <% r.record_elems.each do |re| %>
+          <%= re.elem.lang.name %>
+          <%= re.elem.name %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

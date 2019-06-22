@@ -23,7 +23,6 @@ class ElemsController < ApplicationController
       users.push(re.record.user.name)
     end
     users.uniq!
-    puts users
     @elem_users = []
     users.each do |user|
       @elem_users.push(User.find_by(name: user))
