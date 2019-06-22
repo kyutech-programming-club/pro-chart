@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< 7db6e2df7a13a7d21de5bd379bd09d9fb0a3b423
     <list default="true" id="05c63b46-f7b6-4373-ab9d-8042ae9f0314" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/pro-chart.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
     </list>
+=======
+    <list default="true" id="05c63b46-f7b6-4373-ab9d-8042ae9f0314" name="Default Changelist" comment="" />
+>>>>>>> null false
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
     <ignored path="$PROJECT_DIR$/log/" />
@@ -39,8 +43,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/routes.rb">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< 7db6e2df7a13a7d21de5bd379bd09d9fb0a3b423
             <state relative-caret-position="45">
               <caret line="3" selection-start-line="3" selection-end-line="3" />
+=======
+            <state relative-caret-position="108">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
+>>>>>>> null false
             </state>
           </provider>
         </entry>
@@ -109,6 +118,21 @@
               <item name="pro-chart" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
+<<<<<<< 7db6e2df7a13a7d21de5bd379bd09d9fb0a3b423
+=======
+            <path>
+              <item name="pro-chart" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pro-chart" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pro-chart" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pro-chart" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+>>>>>>> null false
           </expand>
           <select />
         </subPane>
@@ -257,13 +281,21 @@
       <workItem from="1561019934664" duration="1802000" />
       <workItem from="1561103973991" duration="8513000" />
       <workItem from="1561127849476" duration="6117000" />
+<<<<<<< 7db6e2df7a13a7d21de5bd379bd09d9fb0a3b423
       <workItem from="1561182042045" duration="1184000" />
       <workItem from="1561186756536" duration="486000" />
+=======
+      <workItem from="1561182042045" duration="1543000" />
+>>>>>>> null false
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< 7db6e2df7a13a7d21de5bd379bd09d9fb0a3b423
     <option name="totallyTimeSpent" value="28010000" />
+=======
+    <option name="totallyTimeSpent" value="27883000" />
+>>>>>>> null false
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
@@ -384,8 +416,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< 7db6e2df7a13a7d21de5bd379bd09d9fb0a3b423
         <state relative-caret-position="480">
           <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
+=======
+        <state relative-caret-position="108">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+>>>>>>> null false
         </state>
       </provider>
     </entry>
