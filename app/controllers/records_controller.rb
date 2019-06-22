@@ -1,6 +1,6 @@
 class RecordsController < ApplicationController
   before_action :recomend_user, only: %i[new]
-  before_action :authenticate_user, only: %i[create edit update destroy]
+  before_action :authenticate_user, only: %i[create edit update]
 
 
   def index
