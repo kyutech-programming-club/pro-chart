@@ -2,7 +2,8 @@ class User < ApplicationRecord
   attr_accessor :remember_token
 
   has_secure_password
-  has_many :records
+  has_many :records, dependent: :destroy
+  has_many :posts, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
 

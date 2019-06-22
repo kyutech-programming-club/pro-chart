@@ -8,6 +8,20 @@
 <% end %>
 
 <hr>
+<h3>投稿欄</h3>
+<% if current_user %>
+  <%= form_with model: @post, url: lang_elem_posts_path(@elem.lang, @elem) do |f| %>
+    <%= f.text_area :content, class: "form_control", style: "width: 80%; height: 30h;" %>
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+<% end %>
+
+<% @posts.each do |p| %>
+  <%= p.user.name %>: <%= p.content %><br>
+<% end %>
+
+
+<hr>
 
 <h3>クリアした人一覧</h3>
 

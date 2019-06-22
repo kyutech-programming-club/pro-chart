@@ -28,6 +28,10 @@ class ElemsController < ApplicationController
     users.each do |user|
       @elem_users.push(User.find_by(name: user))
     end
+
+    @post = Post.new
+
+    @posts = Post.all
   end
 
   def destroy
