@@ -1,4 +1,8 @@
 <h1>Elems#show</h1>
 <%= @elem.lang.name %>
 <%= @elem.name %>
-
+<% if current_user && current_user.admin? %>
+  |  <%= link_to "削除", lang_elem_path, method: :delete,
+                 data: { confirm: "本当に削除しますか？" } %>
+  <%= link_to "編集",  edit_lang_elem_path(@elem.lang, @elem) %>
+<% end %>

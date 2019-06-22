@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :admin_user, only: :destroy
+
   def index
     @users = User.all
   end
@@ -21,9 +23,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def destroy
+    User.find(params[:id]).destroy
+    redirect_to users_path, success: "削除完了"
+  end
+
   private
 
   def user_params
-    params.required(:user).permit(:name, :password, :password_confirmation)
+    params.require(:user).permit(:name, :password, :password_confirmation)
   end
 end

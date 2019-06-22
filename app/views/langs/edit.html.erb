@@ -1,0 +1,7 @@
+<h1>言語編集</h1>
+<%= form_with model: @lang, local: true do |f| %>
+  <%= inform_validation_error @lang %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>
