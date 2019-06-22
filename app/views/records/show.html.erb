@@ -2,11 +2,11 @@
 <%=@record.user.name %>
 <%=@record.r_date %>
 <%=@record.comment %>
-<%if @record.record_elems %>
+<%if @record.record_elems != []%>
   <%@record.record_elems.each do |e|%>
   <%=e.elem.lang.name %>
   <%=e.elem.name %><hr>
   <% end %>
-  <% else %>
-    <p>naiyo</p>
-  <% end %>
+<% else %>
+  <p>naiyo</p>
+<% end %>
