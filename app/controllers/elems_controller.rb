@@ -1,5 +1,6 @@
 class ElemsController < ApplicationController
   before_action :authenticate_user, only: %i[new create]
+  before_action :admin_user, only: [:edit, :update, :destroy]
 
   def new
     @elem = Elem.new

@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   def admin_user
     if current_user.admin == false
-      redirect_to user_path, danger: "管理者ではありません"
+      redirect_to root_path, danger: "管理者ではありません"
     end
   end
 end
