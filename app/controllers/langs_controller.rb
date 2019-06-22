@@ -1,4 +1,6 @@
 class LangsController < ApplicationController
+  before_action :authenticate_user, only: %i[new create]
+
   def index
     @langs = Lang.all
   end
