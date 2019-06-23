@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   def recomend_user
     if current_user == nil
-      redirect_to login_path, info: "記録するにはメンバーになりましょう！！"
+      redirect_to login_path, info: "登録するにはメンバーになりましょう！！"
     end
   end
 
