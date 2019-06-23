@@ -1,25 +1,25 @@
 <h1><%= @lang.name %></h1>
 
-
-<% clearnums = [] %>
-<% @elems.each do |e| %>
-  <% rs = Record.where(user_id: current_user.id) %>
-  <% rs.each do |r| %>
-    <% r.record_elems.each do |re| %>
-      <% if e.id == re.elem.id %>
-        <% clearnums.push(e.id) %>
+<% if current_user %>
+  <% clearnums = [] %>
+  <% @elems.each do |e| %>
+    <% rs = Record.where(user_id: current_user.id) %>
+    <% rs.each do |r| %>
+      <% r.record_elems.each do |re| %>
+        <% if e.id == re.elem.id %>
+          <% clearnums.push(e.id) %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
+
+  <div align="right", style="font-size:40px;">
+    <%= current_user.name %>さんの達成率は
+    <%= clearnums.uniq.count %> /
+    <%= @elems.count %>
+
+  </div>
 <% end %>
-
-<div align="right", style="font-size:40px;">
-  <%= current_user.name %>さんの達成率は
-  <%= clearnums.uniq.count %> /
-  <%= @elems.count %>
-
-</div>
-
 
 
 <% if current_user && current_user.admin? %>
