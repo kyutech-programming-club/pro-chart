@@ -8,18 +8,41 @@
 <% end %>
 
 <hr>
-<h3>投稿欄</h3>
 <% if current_user %>
   <%= form_with model: @post, url: lang_elem_posts_path(@elem.lang, @elem) do |f| %>
-    <%= f.text_area :content, class: "form_control", style: "width: 80%; height: 30h;" %>
-    <%= f.submit class: "btn btn-primary" %>
+    <%= f.text_area :content, class: "form_control", style: "width: 80%; height: 30h;", placeholder: "感想や質問、ハマった点など、思ったことをなんでも書き込んでみましょう！" %>
+    <%= f.submit "投稿", class: "btn btn-primary" %>
   <% end %>
 <% end %>
 
-<% @posts.each do |p| %>
-  <%= p.user.name %>: <%= p.content %><br>
-<% end %>
 
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>ユーザー名</th>
+    <th>コメント</th>
+    <th>投稿日時</th>
+    <% if current_user %>
+      <th>削除</th>
+    <% end %>
+  </tr>
+  </thead>
+  <tbody>
+  <% @posts.each do |p| %>
+    <tr>
+      <td><%= link_to p.user.name, user_path(p.user) %></td>
+      <td><%= p.content %></td>
+      <td><%= p.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+      <td>
+        <% if current_user && (p.user == current_user || current_user.admin?) %>
+          <%= link_to "削除", lang_elem_post_path(@elem.lang, @elem), method: :delete,
+                      data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
 
 <hr>
 
