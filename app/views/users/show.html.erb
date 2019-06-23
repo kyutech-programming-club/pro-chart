@@ -1,8 +1,20 @@
 <h1><%= @user.name %></h1>
 
-<h2>習得言語一覧</h2>
+<h2>習得言語・要素一覧</h2>
 <% @user_langs.each do |l| %>
-  <%= link_to l.name, l %>
+  <h3><%= link_to l.name, l %></h3>
+  <% lang_elems = [] %>
+  <% @user_records.each do |r| %>
+    <% r.record_elems.each do |re| %>
+      <% if re.elem.lang.name == l.name %>
+        <% lang_elems.push(re.elem.name) %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <% lang_elems.uniq.each do |e| %>
+    <%= link_to e, lang_elem_path(l, Elem.find_by(name: e)) %>
+  <% end %>
+  <br><br>
 <% end %>
 
 <hr>
@@ -13,7 +25,7 @@
   <tr>
     <th>日付</th>
     <th>コメント</th>
-    <th>習得した言語・要素一覧</th>
+    <th>習得した言語・要素</th>
   </tr>
   </thead>
   <tbody>
