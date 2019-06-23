@@ -11,17 +11,12 @@
   </tr>
   </thead>
   <tbody>
-    <% @langs.each do |lang| %>
+    <% @langs.each do |l| %>
+      <% lang = Lang.find(l[0]) %>
       <tr>
         <td><%= link_to lang.name, lang_path(lang) %></td>
         <td><%= lang.elems.count %></td>
-        <% langs = [] %>
-        <% RecordElem.all.each do |f| %>
-          <% if f.elem.lang.name == lang.name %>
-            <% langs.push(f.record.user.name) %>
-          <% end %>
-        <% end %>
-        <td><%= langs.uniq.count %></td>
+        <td><%= l[1] %></td>
       </tr>
   <% end %>
   </tbody>

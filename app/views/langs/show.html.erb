@@ -41,22 +41,17 @@
   </tr>
   </thead>
   <tbody>
-  <% @lang.elems.each do |elem| %>
+  <% @elems_sorted.each do |s| %>
+    <% e = Elem.find(s[0]) %>
     <tr>
-      <td><%= link_to elem.name, lang_elem_path(@lang, elem) %></td>
-      <td>
-        <% users = [] %>
-        <% RecordElem.where(elem_id: elem.id).each do |re| %>
-        <% users.push(re.record.user.name) %>
-        <% end %>
-        <%= users.uniq.count %>
-      </td>
+      <td><%= link_to e.name, lang_elem_path(@lang, e) %></td>
+      <td><%= s[1] %></td>
       <td>
         <% if current_user %>
           <% rs = Record.where(user_id: current_user.id) %>
           <% clear = 0 %>
           <% rs.each do |r| %>
-            <% clear += r.record_elems.where(elem_id: elem.id).count %>
+            <% clear += r.record_elems.where(elem_id: e.id).count %>
           <% end %>
           <% if clear.zero? %>
             未クリア
