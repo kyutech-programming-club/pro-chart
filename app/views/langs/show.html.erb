@@ -60,9 +60,9 @@
             <% clear += r.record_elems.where(elem_id: elem.id).count %>
           <% end %>
           <% if clear.zero? %>
-            未クリア
+            ➖
           <% else %>
-            クリア
+            ◎
           <% end %>
         <% else %>
           未ログインです
