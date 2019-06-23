@@ -13,9 +13,7 @@ class LangsController < ApplicationController
       end
       h[lang.id] = l_users.uniq.count
     end
-    puts h
     @langs = h.sort_by{ |_, v| -v }
-    puts @langs
   end
 
   def new
@@ -34,6 +32,18 @@ class LangsController < ApplicationController
   def show
     @lang = Lang.find(params[:id])
     @elems = @lang.elems
+
+    h = Hash.new
+    Elem.where(lang_id: params[:id]).each do |e|
+      e_users = []
+      RecordElem.where(elem_id: e.id).each do |re|
+        e_users.push(re.record.user.id)
+      end
+      h[e.id] = e_users.uniq.count
+    end
+    puts h
+    @elems_sorted = h.sort_by{ |_, v| -v }
+    puts @elems_sorted
   end
 
   def destroy
