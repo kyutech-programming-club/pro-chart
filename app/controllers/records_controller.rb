@@ -1,7 +1,6 @@
 class RecordsController < ApplicationController
   before_action :recomend_user, only: %i[new]
-  before_action :authenticate_user, only: %i[create edit update]
-
+  before_action :authenticate_user, only: %i[create edit update destroy]
 
   def index
     @records = Record.all
@@ -39,6 +38,11 @@ class RecordsController < ApplicationController
 
   def show
     @record = Record.find(params[:id])
+  end
+
+  def destroy
+    Record.find(params[:id]).destroy
+    redirect_to user_path(current_user), success: "削除完了"
   end
 
   private
