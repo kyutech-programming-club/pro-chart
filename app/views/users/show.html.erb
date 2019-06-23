@@ -1,8 +1,8 @@
 <h1><%= @user.name %></h1>
 
-<h2>習得言語・要素一覧</h2>
+<h2>学んだ言語・要素一覧</h2>
 <% @user_langs.each do |l| %>
-  <h3><%= link_to l.name, l %></h3>
+  <h2><%= link_to l.name, l %></h2>
   <% lang_elems = [] %>
   <% @user_records.each do |r| %>
     <% r.record_elems.each do |re| %>
@@ -12,7 +12,9 @@
     <% end %>
   <% end %>
   <% lang_elems.uniq.each do |e| %>
+    <span style="font-size: 25px;">
     <%= link_to e, lang_elem_path(l, Elem.find_by(name: e)) %>
+    </span>
   <% end %>
   <br><br>
 <% end %>
@@ -20,6 +22,7 @@
 <hr>
 
 <h2>記録一覧</h2>
+<h2>
 <table class="table table-hover">
   <thead>
   <tr>
@@ -38,8 +41,8 @@
       <td><%= r.comment %></td>
       <td>
         <% r.record_elems.each do |re| %>
-          <%= re.elem.lang.name %>
-          <%= re.elem.name %>
+          [ <%= re.elem.lang.name %> /
+            <%= re.elem.name %> ]
         <% end %>
       </td>
       <% if current_user && (@user == current_user || current_user.admin?) %>
@@ -52,3 +55,4 @@
   <% end %>
   </tbody>
 </table>
+</h2>

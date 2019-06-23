@@ -1,7 +1,11 @@
-<h1>要素登録</h1>
+<h1><%=@lang.name %></h1>
 <%= form_with model: @elem, url: lang_elems_path(params[:lang_id]), local: true do |f| %>
   <%= inform_validation_error @elem %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.submit %>
+  <%= f.text_field :name ,class:"form-control",placeholder: "例 : printf,scanfなど"%>
+  <%= f.submit "要素登録",class:"btn btn-primary"%>
+<% end %><br><br><br><br>
+
+<h2>今ある<%=@lang.name %>の要素</h2><br>
+<% Elem.where(lang_id: @lang.id).each do |e| %>
+  <h3><%=e.name %></h3>
 <% end %>

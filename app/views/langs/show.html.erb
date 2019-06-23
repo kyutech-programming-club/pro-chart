@@ -14,7 +14,8 @@
 <% end %>
 
 <div align="right", style="font-size:40px;">
-  <%= clearnums.uniq.count %>/
+  <%= current_user.name %>さんの達成率は
+  <%= clearnums.uniq.count %> /
   <%= @elems.count %>
 
 </div>
@@ -31,7 +32,7 @@
 
 <%= link_to "要素追加", new_lang_elem_path(@lang, @elems), class: "btn btn-primary" %>
 
-
+<h2>
 <table class="table table-hover">
   <thead>
   <tr>
@@ -54,9 +55,9 @@
             <% clear += r.record_elems.where(elem_id: e.id).count %>
           <% end %>
           <% if clear.zero? %>
-            未クリア
+            ➖
           <% else %>
-            クリア
+            ◎
           <% end %>
         <% else %>
           未ログインです
@@ -66,3 +67,4 @@
   <% end %>
   </tbody>
 </table>
+</h2>

@@ -4,13 +4,14 @@ class ElemsController < ApplicationController
 
   def new
     @elem = Elem.new
+    @lang = Lang.find(params[:lang_id])
   end
 
   def create
-    lang = Lang.find(params[:lang_id])
-    @elem = lang.elems.build(elem_params)
+    @lang = Lang.find(params[:lang_id])
+    @elem = @lang.elems.build(elem_params)
     if @elem.save
-      redirect_to langs_path, success: "要素の登録に成功しました"
+      redirect_to new_lang_elem_path(@lang), success: "要素の登録に成功しました"
     else
       render :new
     end
