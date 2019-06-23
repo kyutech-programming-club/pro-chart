@@ -15,7 +15,7 @@
   <% end %>
 <% end %>
 
-
+<h2>
 <table class="table table-hover">
   <thead>
   <tr>
@@ -27,7 +27,8 @@
     <% end %>
   </tr>
   </thead>
-  <tbody>
+  <tbody><br>
+
   <% @posts.each do |p| %>
     <tr>
       <td><%= link_to p.user.name, user_path(p.user) %></td>
@@ -43,6 +44,7 @@
   <% end %>
   </tbody>
 </table>
+</h2>
 
 <hr>
 
