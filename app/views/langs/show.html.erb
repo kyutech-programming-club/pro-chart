@@ -1,5 +1,23 @@
 <h1><%= @lang.name %></h1>
 
+
+<% clearnums = [] %>
+<% @elems.each do |e| %>
+  <% rs = Record.where(user_id: current_user.id) %>
+  <% rs.each do |r| %>
+    <% r.record_elems.each do |re| %>
+      <% if e.id == re.elem.id %>
+        <% clearnums.push(e.id) %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= @elems.count %>
+<%= clearnums.uniq.count %>
+<h1><%= clearnums.uniq.count / @elems.count * 100 %></h1>
+
+
 <% if current_user && current_user.admin? %>
   <%= link_to "削除", lang_path(@lang), method: :delete,
                  data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
