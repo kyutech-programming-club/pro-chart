@@ -13,9 +13,12 @@
   <% end %>
 <% end %>
 
-<%= @elems.count %>
-<%= clearnums.uniq.count %>
-<h1><%= clearnums.uniq.count / @elems.count * 100 %></h1>
+<div align="right", style="font-size:40px;">
+  <%= clearnums.uniq.count %>/
+  <%= @elems.count %>
+
+</div>
+
 
 
 <% if current_user && current_user.admin? %>
