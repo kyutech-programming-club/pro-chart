@@ -1,6 +1,6 @@
 <h1><%= @user.name %></h1>
 
-<h2>習得言語・要素一覧</h2>
+<h2>学んだ言語・要素一覧</h2>
 <% @user_langs.each do |l| %>
   <h3><%= link_to l.name, l %></h3>
   <% lang_elems = [] %>
@@ -38,8 +38,8 @@
       <td><%= r.comment %></td>
       <td>
         <% r.record_elems.each do |re| %>
-          <%= re.elem.lang.name %>
-          <%= re.elem.name %>
+          [ <%= re.elem.lang.name %> /
+            <%= re.elem.name %> ]
         <% end %>
       </td>
       <% if current_user && (@user == current_user || current_user.admin?) %>
