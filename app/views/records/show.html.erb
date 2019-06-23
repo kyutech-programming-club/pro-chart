@@ -6,9 +6,9 @@
 <h3>言語・要素</h3>
 <%if @record.record_elems != []%>
   <%@record.record_elems.each do |e|%>
-    <h4><%=e.elem.lang.name %></h4>
-    <%=e.elem.name %><hr>
+    <h2><%=e.elem.lang.name %></h2>
+     <h3><%=e.elem.name %></h3><hr>
   <% end %>
 <% else %>
-  <p>なし</p>
+  <h2>なし</h2>
 <% end %>
