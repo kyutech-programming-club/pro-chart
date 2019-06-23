@@ -32,7 +32,7 @@
     <tr>
       <td><%= link_to p.user.name, user_path(p.user) %></td>
       <td><%= p.content %></td>
-      <td><%= p.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+      <td><%= p.created_at.in_time_zone('Tokyo').strftime("%Y-%m-%d %H:%M:%S") %></td>
       <td>
         <% if current_user && (p.user == current_user || current_user.admin?) %>
           <%= link_to "削除", lang_elem_post_path(@elem.lang, @elem), method: :delete,
