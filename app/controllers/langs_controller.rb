@@ -3,7 +3,19 @@ class LangsController < ApplicationController
   before_action :admin_user, only: %i[edit update destroy]
 
   def index
-    @langs = Lang.all
+    h = Hash.new
+    Lang.all.each do |lang|
+      l_users = []
+      RecordElem.all.each do |re|
+        if re.elem.lang == lang
+          l_users.push(re.record.user.id)
+        end
+      end
+      h[lang.id] = l_users.uniq.count
+    end
+    puts h
+    @langs = h.sort_by{ |_, v| -v }
+    puts @langs
   end
 
   def new
