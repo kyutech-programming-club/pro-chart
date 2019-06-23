@@ -31,6 +31,8 @@
 
 <% flash.each do |name, msg| %>
   <div class="alert alert-<%= name %>">
-    <%= msg.html_safe %>
+    <div class="container">
+      <%= msg.html_safe %>
+    </div>
   </div>
 <% end %>

@@ -2,6 +2,6 @@
 <%= form_with model: @lang, local: true do |f| %>
   <%= inform_validation_error @lang %>
   <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.submit %>
+  <%= f.text_field :name, class:"form-control" %>
+  <%= f.submit "登録", class:"btn btn-primary btn-lg" %>
 <% end %>
