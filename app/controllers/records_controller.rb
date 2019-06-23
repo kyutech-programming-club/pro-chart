@@ -23,6 +23,14 @@ class RecordsController < ApplicationController
           re.save
         end
       end
+      params[:elem].each do |n|
+        unless n[1].blank?
+          new_elem = Elem.new(lang_id: n[0].first.to_i, name: n[1])
+          new_elem.save
+          n_re = RecordElem.new(record_id: @record.id, elem_id: new_elem.id)
+          n_re.save
+        end
+      end
       redirect_to record_path(@record)
     else
       render :new
