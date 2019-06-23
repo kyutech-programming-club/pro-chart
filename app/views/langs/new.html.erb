@@ -1,7 +1,9 @@
 <h1>言語登録</h1>
+<h2>
 <%= form_with model: @lang, local: true do |f| %>
   <%= inform_validation_error @lang %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.submit %>
+  <%= f.label "言語名" %>
+  <%= f.text_field :name, class:"form-control" %>
+  <%= f.submit "登録", class:"btn btn-primary btn-lg" %>
 <% end %>
+</h2>

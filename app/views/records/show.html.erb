@@ -1,0 +1,14 @@
+<h1><%=@record.r_date %>　<%=@record.user.name %>の記録</h1>
+<hr>
+<h3>コメント</h3>
+<p><%=@record.comment %></p>
+<hr>
+<h3>言語・要素</h3>
+<%if @record.record_elems != []%>
+  <%@record.record_elems.each do |e|%>
+    <h2><%=e.elem.lang.name %></h2>
+     <h3><%=e.elem.name %></h3><hr>
+  <% end %>
+<% else %>
+  <h2>なし</h2>
+<% end %>

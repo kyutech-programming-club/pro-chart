@@ -1,11 +1,10 @@
-<h1>TOP</h1>
-<% if current_user %>
-  <p>ログインに成功しました</p>
-  <% @users.each do |user| %>
-    <%= link_to user.name, user_path(user) %>
-  <% end %>
-  <%= link_to "Log out", logout_path, method: :delete %>
-<% else %>
-  <%= link_to "ログイン", login_path %>
-  <%= link_to "新規登録", new_user_path %>
+<h1>メンバー</h1>
+<% @users.each do |user| %>
+  <h2><%= link_to user.name, user_path(user) %></h2>
+
+    <% if current_user && current_user.admin? %>
+       |<%= link_to "delete", user, method: :delete,
+                    data: { confirm: "本当に削除しますか？" } %>
+    <% end %>
+  <br>
 <% end %>

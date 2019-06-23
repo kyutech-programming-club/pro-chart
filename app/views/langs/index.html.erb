@@ -1,3 +1,25 @@
-<% @langs.each do |lang| %>
-  <%= link_to lang.name, lang_path(lang) %>
-<% end %>
+<h1>言語一覧</h1>
+
+<%= link_to "新規登録", new_lang_path, class: "btn btn-primary" %><br><br>
+
+<h2>
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>言語名</th>
+    <th>要素数</th>
+    <th>参加人数</th>
+  </tr>
+  </thead>
+  <tbody>
+    <% @langs.each do |l| %>
+      <% lang = Lang.find(l[0]) %>
+      <tr>
+        <td><%= link_to lang.name, lang_path(lang) %></td>
+        <td><%= lang.elems.count %></td>
+        <td><%= l[1] %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+</h2>

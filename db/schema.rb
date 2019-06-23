@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_22_085433) do
+ActiveRecord::Schema.define(version: 2019_06_22_221359) do
 
   create_table "elems", force: :cascade do |t|
     t.integer "lang_id"
@@ -26,11 +26,41 @@ ActiveRecord::Schema.define(version: 2019_06_22_085433) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "elem_id"
+    t.text "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["elem_id"], name: "index_posts_on_elem_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "record_elems", force: :cascade do |t|
+    t.integer "record_id"
+    t.integer "elem_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["elem_id"], name: "index_record_elems_on_elem_id"
+    t.index ["record_id"], name: "index_record_elems_on_record_id"
+  end
+
+  create_table "records", force: :cascade do |t|
+    t.integer "user_id"
+    t.date "r_date"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_records_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin", default: false
+    t.string "remember_digest"
   end
 
 end

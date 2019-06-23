@@ -1,0 +1,21 @@
+<h1>記録投稿</h1>
+<div class="form-group">
+  <%= form_with model: @record, local: true do |f| %>
+    <%= inform_validation_error @record %>
+    <%= f.label "日付" %>
+    <%= f.date_select :r_date, class: "form-control" %><br>
+
+    <%= f.text_area :comment, class: "form-control", placeholder: "コメント" %><br>
+
+    <h2>言語・要素選択</h2>
+    <% @langs.each do |lang|%>
+      <h3><%= lang.name %></h3>
+      <div class="col-md-4 checkbox-list">
+        <h3><%= collection_check_boxes(:group,:elem_ids, Elem.where(lang_id: lang.id), :id, :name, include_hidden: false) %>
+        </h3></div>
+      <%= text_field :elem, "#{lang.id}_name", class: "form-control", placeholder: "新規の要素" %>
+      <hr>
+    <% end %>
+    <%= f.submit "登録", class: "btn btn-primary btn-lg" %>
+  <% end %>
+</div>

@@ -1,4 +1,54 @@
-<h1>Elems#show</h1>
-<%= @elem.lang.name %>
-<%= @elem.name %>
+<h1><%= @elem.lang.name %></h1>
+<h2><%= @elem.name %></h2>
 
+<% if current_user && current_user.admin? %>
+  <%= link_to "削除", lang_elem_path, method: :delete,
+                 data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+  <%= link_to "編集",  edit_lang_elem_path(@elem.lang, @elem), class: "btn btn-warning" %>
+<% end %>
+
+<hr>
+<% if current_user %>
+  <%= form_with model: @post, url: lang_elem_posts_path(@elem.lang, @elem) do |f| %>
+    <%= f.text_area :content, class: "form_control", style: "width: 80%; height: 30h;", placeholder: "感想や質問、ハマった点など、思ったことをなんでも書き込んでみましょう！" %>
+    <%= f.submit "投稿", class: "btn btn-primary" %>
+  <% end %>
+<% end %>
+<h4>
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>ユーザー名</th>
+    <th>コメント</th>
+    <th>投稿日時</th>
+    <% if current_user %>
+      <th>削除</th>
+    <% end %>
+  </tr>
+  </thead>
+  <tbody><br>
+
+  <% @posts.each do |p| %>
+    <tr>
+      <td><%= link_to p.user.name, user_path(p.user) %></td>
+      <td><%= p.content %></td>
+      <td><%= p.created_at.in_time_zone('Tokyo').strftime("%Y-%m-%d %H:%M:%S") %></td>
+      <td>
+        <% if current_user && (p.user == current_user || current_user.admin?) %>
+          <%= link_to "削除", lang_elem_post_path(@elem.lang, @elem), method: :delete,
+                      data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+</h4>
+<hr>
+
+<h3>クリアした人一覧</h3>
+<h3>
+<% @elem_users.each do |u| %>
+  <%= link_to u.name, u %><br>
+<% end %>
+</h3>

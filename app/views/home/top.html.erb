@@ -1,6 +1,14 @@
-<h1>ProChart</h1>
-<%=link_to "新言語登録", new_lang_path%>
-<%=link_to "言語一覧", langs_path%>
-<br>
-<%=link_to "ログイン", login_path%>
-<%=link_to "新規登録", new_user_path%>
+<center>
+   <br><br>
+  <h1 style="font-size: 70px; font-weight: 800; color: #3E4959;">君たちはきっと強くなれる</h1>
+   <br><br><br><br><br><br>
+
+<div style="font-size:50px;">
+  <%= link_to "今日の成果", new_record_path, class:"btn btn-primary btn-lg", style:"height:100px;width:40%;font-size:60px" %>
+  <br><br>
+  <%=link_to "みんなのタスク", langs_path, class:"btn btn-default", style:"height:20%;width:30%;font-size:30px; background-color: #D31B35; color: white;"%>
+
+  <%=link_to "みんなの成果", records_path, class:"btn btn-default", style:"height:20%;width:30%;font-size:30px; background-color: #304345; color: white;" %>
+</div>
+
+</center>

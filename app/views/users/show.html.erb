@@ -1,2 +1,59 @@
-<h1>Users#show</h1>
-<%= @user.name %>
+<h1><%= @user.name %></h1>
+
+<h2>学んだ言語・要素一覧</h2>
+<% @user_langs.each do |l| %>
+  <h2><%= link_to l.name, l %></h2>
+  <% lang_elems = [] %>
+  <% @user_records.each do |r| %>
+    <% r.record_elems.each do |re| %>
+      <% if re.elem.lang.name == l.name %>
+        <% lang_elems.push(re.elem.name) %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <% lang_elems.uniq.each do |e| %>
+    <span style="font-size: 25px;">
+    <%= link_to e, lang_elem_path(l, Elem.find_by(name: e)) %>
+    </span>
+  <% end %>
+  <br><br>
+<% end %>
+
+<hr>
+
+
+<h2>記録一覧</h2>
+<h4>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>日付</th>
+      <th>コメント</th>
+      <th>習得した言語・要素</th>
+      <% if current_user && (@user == current_user || current_user.admin?) %>
+        <th>削除</th>
+      <% end %>
+    </tr>
+    </thead>
+    <tbody>
+    <% @user_records.each do |r| %>
+      <tr>
+        <td><%= r.r_date %></td>
+        <td><%= r.comment %></td>
+        <td>
+          <% r.record_elems.each do |re| %>
+            [ <%= re.elem.lang.name %> /
+              <%= re.elem.name %> ]
+          <% end %>
+        </td>
+        <% if current_user && (@user == current_user || current_user.admin?) %>
+          <td>
+            <%= link_to "削除", record_path(r), method: :delete,
+                        data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</h4>
