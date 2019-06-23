@@ -1,9 +1,9 @@
 <h1>メンバー</h1>
 <% @users.each do |user| %>
-  <%= link_to user.name, user_path(user) %>
+  <h2><%= link_to user.name, user_path(user) %></h2>
 
     <% if current_user && current_user.admin? %>
-       | <%= link_to "delete", user, method: :delete,
+       |<%= link_to "delete", user, method: :delete,
                     data: { confirm: "本当に削除しますか？" } %>
     <% end %>
   <br>
