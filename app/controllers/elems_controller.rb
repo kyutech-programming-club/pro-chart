@@ -30,7 +30,7 @@ class ElemsController < ApplicationController
 
     @post = Post.new
 
-    @posts = Post.all
+    @posts = Post.where(elem_id: @elem.id)
   end
 
   def destroy

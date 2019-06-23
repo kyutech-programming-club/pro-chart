@@ -10,7 +10,9 @@
   <h3>言語・要素選択</h3>
   <% @langs.each do |lang|%>
     <h4><%= lang.name%></h4>
-    <%= collection_check_boxes(:group,:elem_ids, Elem.where(lang_id: lang.id), :id, :name, include_hidden: false)%><hr>
+    <%= collection_check_boxes(:group,:elem_ids, Elem.where(lang_id: lang.id), :id, :name, include_hidden: false)%>
+    <%= text_field :elem, "#{lang.id}_name", class: "form-control" %>
+    <hr>
   <% end %>
   <%= f.submit class: "btn btn-primary"%>
 <% end %>
