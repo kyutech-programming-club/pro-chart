@@ -1,24 +1,48 @@
-# README
+# Pro-chart
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
+プログラミングをなにから学べばいいかわからないという問題を、他の人が学んできた歩みを参考にすることで解決するプロダクト
 
-Things you may want to cover:
+## Features
+- ユーザー関連
+  - 新規登録
+  - ログイン
+    - ログイン情報の保持
+  - ログアウト
+  - 管理者権限
 
-* Ruby version
+- 言語・要素関連
+  - 言語・要素登録
+  - 要素詳細内での掲示板
+  - 編集・削除（管理者のみ）
+  - 自分が過去に達成したかわかる
 
-* System dependencies
+- 日々の成果関連
+  - 成果登録
+  - 削除（当人・管理者のみ）
+  
+## Requirement
+- Rails 5.2.3
+- Ruby 2.6.3
 
-* Configuration
+## Usage
+#### 成果の登録を行う場合
+1. ユーザー登録・ログイン
+2. トップから、「今日の成果」を選択
+3. 日付・コメントと一緒に、習得した言語とその要素を選択する。（例： C言語のprintfなど）
 
-* Database creation
+#### 他人の学習状況を参考にする場合
+- どんな言語・要素を学ぼうかな
+  - 「みんなのタスク」から、人気のある言語を知る（人数順でソート）
+- みんな最近何をしてるのかな
+  - 「みんなの成果」から、他の人の成果を知る
+- printfわからないよ〜、誰かに聞きたい！
+  - 対象の要素詳細（C言語のprintfのページ）の、クリアした人一覧の中から聞きに行く。
+  - 掲示板機能を使い、質問する。
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Installation
+1. `git clone git@github.com:kyutech-programming-club/pro-chart.git`
+2. `cd pro-chart`
+3. `bundle install`
+4. `rails db:migrate`
+5. `rails s`
